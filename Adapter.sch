@@ -221,13 +221,13 @@ Text Label 2550 2550 0    50   ~ 0
 DP3-
 Text Label 2550 2650 0    50   ~ 0
 DP3+
-Text Label 4600 1700 2    50   ~ 0
+Text Label 5600 2200 0    50   ~ 0
 DP0+
-Text Label 4600 1800 2    50   ~ 0
+Text Label 5600 2300 0    50   ~ 0
 DP0-
-Text Label 4600 2000 2    50   ~ 0
+Text Label 5600 1900 0    50   ~ 0
 DP2+
-Text Label 4600 2100 2    50   ~ 0
+Text Label 5600 2000 0    50   ~ 0
 DP2-
 Text Label 4600 2300 2    50   ~ 0
 CONFIG1
@@ -243,13 +243,13 @@ Text Label 5600 2700 0    50   ~ 0
 DP_PWR
 Text Label 5600 2600 0    50   ~ 0
 HPD
-Text Label 5600 2200 0    50   ~ 0
+Text Label 4600 1700 2    50   ~ 0
 DP3+
-Text Label 5600 2300 0    50   ~ 0
+Text Label 4600 1800 2    50   ~ 0
 DP3-
-Text Label 5600 1900 0    50   ~ 0
+Text Label 4600 2000 2    50   ~ 0
 DP1+
-Text Label 5600 2000 0    50   ~ 0
+Text Label 4600 2100 2    50   ~ 0
 DP1-
 $Comp
 L power:GND #PWR0107
@@ -371,4 +371,21 @@ F 3 "" H 7050 2800 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	7050 2800 7050 2550
+$Comp
+L power:GND #PWR?
+U 1 1 5B43B19D
+P 4800 3500
+F 0 "#PWR?" H 4800 3250 50  0001 C CNN
+F 1 "GND" H 4805 3327 50  0000 C CNN
+F 2 "" H 4800 3500 50  0001 C CNN
+F 3 "" H 4800 3500 50  0001 C CNN
+	1    4800 3500
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4800 3500 4800 3400
+Wire Wire Line
+	1650 4150 1650 4300
+Wire Wire Line
+	1650 4300 1750 4300
 $EndSCHEMATC
