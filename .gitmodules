@@ -1,3 +1,7 @@
 [submodule "digikey-kicad-library"]
 	path = adapter/digikey-kicad-library
 	url = https://github.com/digikey/digikey-kicad-library
+[submodule "firmware"]
+	path = firmware
+	url = https://github.com/strfry/LG360VR-EC
+	branch = firmware-twinkie-9628.B
