@@ -8,4 +8,6 @@ Our assumption is, that with little hardware effort, we can send a DisplayPort s
 # Current State of things
 
 - A passive PCB Adapter has been manufactured, though it doesn't work
-- Currently in the process of analyzing USB-PD communication, to figure out if this is the problem
+- ~~Currently in the process of analyzing USB-PD communication, to figure out if this is the problem~~
+  - Resolution: USB-PD Handshake is definitely necessary to get a display connection
+- Now designing a new PCB with STM32F072 for PD Handshake and DisplayPort Redriver IC
