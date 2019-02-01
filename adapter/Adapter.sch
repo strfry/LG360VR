@@ -1,4 +1,5 @@
 EESchema Schematic File Version 4
+LIBS:Adapter-cache
 EELAYER 26 0
 EELAYER END
 $Descr A4 11693 8268
@@ -22,14 +23,13 @@ F 1 "2040210-1" H 1700 2381 60  0000 C CNN
 F 2 "DP1RD20JQ1R400:DP1RD20JQ1R400" H 1900 1750 60  0001 L CNN
 F 3 "http://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2040210&DocType=Customer+Drawing&DocLang=Japanese" H 1900 1850 60  0001 L CNN
 F 4 "CONN RCPT DISPLAYPRT 1.1A 20POS" H 1900 2550 60  0001 L CNN "Description"
-F 5 "A99344-ND" H 1900 1950 60  0001 L CNN "Digi-Key_PN"
-F 6 "2040210-1" H 1900 2050 60  0001 L CNN "MPN"
-F 7 "Connectors, Interconnects" H 1900 2150 60  0001 L CNN "Category"
-F 8 "USB, DVI, HDMI Connectors" H 1900 2250 60  0001 L CNN "Family"
-F 9 "http://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2040210&DocType=Customer+Drawing&DocLang=Japanese" H 1900 2350 60  0001 L CNN "DK_Datasheet_Link"
-F 10 "/product-detail/en/te-connectivity-amp-connectors/2040210-1/A99344-ND/1930791" H 1900 2450 60  0001 L CNN "DK_Detail_Page"
-F 11 "TE Connectivity AMP Connectors" H 1900 2650 60  0001 L CNN "Manufacturer"
-F 12 "Active" H 1900 2750 60  0001 L CNN "Status"
+F 5 "DP1R020JQ3" H 1900 2050 60  0001 L CNN "MPN"
+F 6 "Connectors, Interconnects" H 1900 2150 60  0001 L CNN "Category"
+F 7 "USB, DVI, HDMI Connectors" H 1900 2250 60  0001 L CNN "Family"
+F 8 "http://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2040210&DocType=Customer+Drawing&DocLang=Japanese" H 1900 2350 60  0001 L CNN "DK_Datasheet_Link"
+F 9 "/product-detail/en/te-connectivity-amp-connectors/2040210-1/A99344-ND/1930791" H 1900 2450 60  0001 L CNN "DK_Detail_Page"
+F 10 "TE Connectivity AMP Connectors" H 1900 2650 60  0001 L CNN "Manufacturer"
+F 11 "Active" H 1900 2750 60  0001 L CNN "Status"
 	1    1700 1550
 	1    0    0    -1  
 $EndComp
@@ -240,7 +240,7 @@ Wire Wire Line
 Wire Wire Line
 	700  1350 700  1650
 Connection ~ 700  1650
-Text Label 5100 6450 2    50   ~ 0
+Text Label 4550 6450 0    50   ~ 0
 HPD
 $Comp
 L power:GND #PWR0111
@@ -259,13 +259,6 @@ Wire Wire Line
 	6100 4950 6100 5100
 Wire Wire Line
 	6100 5100 6200 5100
-Wire Wire Line
-	5300 6350 5300 6450
-Wire Wire Line
-	5100 6450 5300 6450
-Connection ~ 5300 6450
-Wire Wire Line
-	5300 6450 5300 6550
 Wire Wire Line
 	7000 3150 7200 3150
 Wire Wire Line
@@ -365,12 +358,12 @@ F 3 "http://www.st.com/st-web-ui/static/active/en/resource/technical/document/da
 	1    3750 5750
 	1    0    0    -1  
 $EndComp
-Text Notes 11850 3200 0    50   ~ 0
-STM32 Q&A:\nDoes the VBAT need to be connected?\nDo we need special decoupling for AVDD?\nWhich are the analog pins?\n\nHow to do reset?  -> can it be left floating / on SWD connector?\n\n\nWhat is BOOT0?\n\n\nHow we do programming? -> expose SWD Pins + VDD + RESET\n\nDo PF0/1 have a special function? -> Yes, the Mhz Quartz\n\nOpt to not populate Crystal? F0x2 is "crystalless USB type"
+Text Notes -450 7650 0    50   ~ 0
+STM32 Q&A:\nDoes the VBAT need to be connected?\nDo we need special decoupling for AVDD?\n\nWhich are the analog pins?\nstm32f072rb.pdf p.33 ff -> PA0-PA7, PB0-\n\n5V Tolerant pins?\n-> PF0-1, PB10-11\n\n\nHow to do reset?  -> can it be left floating / on SWD connector?\n\n\nWhat is BOOT0?\n\n\nHow we do programming? -> expose SWD Pins + VDD + RESET\n\nDo PF0/1 have a special function? -> Yes, the Mhz Quartz\n\nOpt to not populate Crystal? F0x2 is "crystalless USB type"
 Text Notes -1350 1600 0    50   ~ 0
 KiCAD Questions?\n\nEasiest way to place test points?
 Text Notes -7300 3400 0    50   ~ 0
-Design Considerations.\n\nWhat to do with extra lane on DP redriver?\n -> route DP1+- as well, disable lane through EN-Z in software\n\nTerminate extra DP lanes or leave open? \n\n\nMake use of USB in STM32?-> Break out to pin headers?\n-> maybe, just maybe: connect to device USB, and leave floating?\n\n\nConnect CONFIG1/CONFIG2 to microcontroller, just in case? -> Connect CONFIG2 to CEC AF-Pin\n-> CONFIG1/CONFIG2 is not I2C, would need separate conn to AUX: http://mikesmods.com/mm-wp/wp-content/uploads/2014/03/Commercial_DP2DVI_Adapter.pdf\n\n\nShould USB-C VBUS be FET switchable? Should CC lines be switched as well?\n-> TI Paper says Disconnect FET is needed -> sth. like \nHigh Side PMOS: IRLML2244TRPBF\n\n\n
+Design Considerations.\n\nWhat to do with extra lane on DP redriver?\n -> route DP1+- as well, disable lane through EN-Z in software\n-> dont route, save hassle, focus on matching DP0\n\nTerminate extra DP lanes or leave open? \n\n\nMake use of USB in STM32?-> Break out to pin headers?\n-> maybe, just maybe: connect to device USB, and leave floating?\n\n\nConnect CONFIG1/CONFIG2 to microcontroller, just in case? -> Connect CONFIG2 to CEC AF-Pin\n-> CONFIG1/CONFIG2 is not I2C, would need separate conn to AUX: http://mikesmods.com/mm-wp/wp-content/uploads/2014/03/Commercial_DP2DVI_Adapter.pdf\n\n\nShould USB-C VBUS be FET switchable? Should CC lines be switched as well?\n-> TI Paper says Disconnect FET is needed -> sth. like \nHigh Side PMOS: IRLML2244TRPBF\n\n\nUSB-PD CC PHY?\n\n\nSPI Self Clock!!!\n
 NoConn ~ 2200 1350
 NoConn ~ 2200 1450
 NoConn ~ 1200 1250
@@ -386,8 +379,6 @@ F 3 "~" H 3850 3800 50  0001 C CNN
 	1    3850 3800
 	1    0    0    -1  
 $EndComp
-Text Notes -1900 4700 0    50   ~ 0
-BOM\n\n8MHz Crystal -> In Stock??
 NoConn ~ 2200 2150
 Text GLabel 3950 1200 0    50   Input ~ 0
 EQ_CTL
@@ -436,7 +427,7 @@ L Device:C_Small C2
 U 1 1 5C516D27
 P 3750 2200
 F 0 "C2" H 3842 2246 50  0000 L CNN
-F 1 "C_Small" H 3842 2155 50  0000 L CNN
+F 1 "100n" H 3700 2150 50  0000 L CNN
 F 2 "" H 3750 2200 50  0001 C CNN
 F 3 "~" H 3750 2200 50  0001 C CNN
 	1    3750 2200
@@ -447,7 +438,7 @@ L Device:C_Small C1
 U 1 1 5C516D81
 P 3600 2200
 F 0 "C1" H 3692 2246 50  0000 L CNN
-F 1 "C_Small" H 3692 2155 50  0000 L CNN
+F 1 "100n" H 3500 2150 50  0000 L CNN
 F 2 "" H 3600 2200 50  0001 C CNN
 F 3 "~" H 3600 2200 50  0001 C CNN
 	1    3600 2200
@@ -524,13 +515,13 @@ Wire Wire Line
 	7150 1800 7150 2050
 Text GLabel 6800 1600 0    50   Input ~ 0
 VBUS_EN
-Text GLabel 5500 7050 0    50   Input ~ 0
+Text GLabel 3050 6550 0    50   Input ~ 0
 VBUS_EN
 $Comp
-L Device:Q_PMOS_GSD Q?
+L Device:Q_PMOS_GSD Q1
 U 1 1 5C5332B1
 P 7050 1600
-F 0 "Q?" H 7256 1554 50  0000 L CNN
+F 0 "Q1" H 7256 1554 50  0000 L CNN
 F 1 "IRLML2244TRPBF" H 7256 1645 50  0000 L CNN
 F 2 "" H 7250 1700 50  0001 C CNN
 F 3 "~" H 7050 1600 50  0001 C CNN
@@ -540,10 +531,10 @@ $EndComp
 Wire Wire Line
 	7150 1200 7150 1250
 $Comp
-L Device:R R?
+L Device:R R1
 U 1 1 5C53632A
 P 6800 1400
-F 0 "R?" H 6870 1446 50  0000 L CNN
+F 0 "R1" H 6870 1446 50  0000 L CNN
 F 1 "100k" H 6870 1355 50  0000 L CNN
 F 2 "" V 6730 1400 50  0001 C CNN
 F 3 "~" H 6800 1400 50  0001 C CNN
@@ -568,10 +559,10 @@ EXT_3.3V
 Text Label 9500 3000 2    50   ~ 0
 SWCLK
 $Comp
-L power:GND #PWR?
+L power:GND #PWR0105
 U 1 1 5C53D6AA
 P 9150 3550
-F 0 "#PWR?" H 9150 3300 50  0001 C CNN
+F 0 "#PWR0105" H 9150 3300 50  0001 C CNN
 F 1 "GND" H 9155 3377 50  0000 C CNN
 F 2 "" H 9150 3550 50  0001 C CNN
 F 3 "" H 9150 3550 50  0001 C CNN
@@ -583,10 +574,10 @@ SWDIO
 Text Label 9500 3300 2    50   ~ 0
 nRESET
 $Comp
-L Connector:Conn_01x05_Male J?
+L Connector:Conn_01x05_Male J4
 U 1 1 5C53F02C
 P 9700 3100
-F 0 "J?" H 9673 3123 50  0000 R CNN
+F 0 "J4" H 9673 3123 50  0000 R CNN
 F 1 "Conn_01x05_Male" H 9673 3032 50  0000 R CNN
 F 2 "" H 9700 3100 50  0001 C CNN
 F 3 "~" H 9700 3100 50  0001 C CNN
@@ -594,83 +585,83 @@ F 3 "~" H 9700 3100 50  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 Text Notes 9700 3500 0    50   ~ 0
-SWD Connector\nCheck congruence with nucleo board??
+SWD Connector\nCheck congruence with nucleo board??\nSTMboards have 6 pins??
 $Comp
-L Device:Crystal Y?
+L Device:Crystal Y1
 U 1 1 5C54201B
-P 2300 4700
-F 0 "Y?" V 2254 4831 50  0000 L CNN
-F 1 "8MHZ" V 2345 4831 50  0000 L CNN
-F 2 "" H 2300 4700 50  0001 C CNN
-F 3 "~" H 2300 4700 50  0001 C CNN
-	1    2300 4700
+P 1600 5150
+F 0 "Y1" V 1554 5281 50  0000 L CNN
+F 1 "8MHZ" V 1645 5281 50  0000 L CNN
+F 2 "" H 1600 5150 50  0001 C CNN
+F 3 "~" H 1600 5150 50  0001 C CNN
+	1    1600 5150
 	0    1    1    0   
 $EndComp
 $Comp
-L power:GND #PWR?
+L power:GND #PWR0106
 U 1 1 5C542270
-P 1650 5000
-F 0 "#PWR?" H 1650 4750 50  0001 C CNN
-F 1 "GND" H 1655 4827 50  0000 C CNN
-F 2 "" H 1650 5000 50  0001 C CNN
-F 3 "" H 1650 5000 50  0001 C CNN
-	1    1650 5000
+P 950 5450
+F 0 "#PWR0106" H 950 5200 50  0001 C CNN
+F 1 "GND" H 955 5277 50  0000 C CNN
+F 2 "" H 950 5450 50  0001 C CNN
+F 3 "" H 950 5450 50  0001 C CNN
+	1    950  5450
 	1    0    0    -1  
 $EndComp
 $Comp
-L Device:C_Small C?
+L Device:C_Small C9
 U 1 1 5C5423CC
-P 2000 4450
-F 0 "C?" V 1771 4450 50  0000 C CNN
-F 1 "20p" V 1862 4450 50  0000 C CNN
-F 2 "" H 2000 4450 50  0001 C CNN
-F 3 "~" H 2000 4450 50  0001 C CNN
-	1    2000 4450
+P 1300 4900
+F 0 "C9" V 1071 4900 50  0000 C CNN
+F 1 "20p" V 1162 4900 50  0000 C CNN
+F 2 "" H 1300 4900 50  0001 C CNN
+F 3 "~" H 1300 4900 50  0001 C CNN
+	1    1300 4900
 	0    1    1    0   
 $EndComp
 $Comp
-L Device:C_Small C?
+L Device:C_Small C10
 U 1 1 5C542444
-P 2000 4950
-F 0 "C?" V 1771 4950 50  0000 C CNN
-F 1 "20p" V 1862 4950 50  0000 C CNN
-F 2 "" H 2000 4950 50  0001 C CNN
-F 3 "~" H 2000 4950 50  0001 C CNN
-	1    2000 4950
+P 1300 5400
+F 0 "C10" V 1071 5400 50  0000 C CNN
+F 1 "20p" V 1162 5400 50  0000 C CNN
+F 2 "" H 1300 5400 50  0001 C CNN
+F 3 "~" H 1300 5400 50  0001 C CNN
+	1    1300 5400
 	0    1    1    0   
 $EndComp
 Wire Wire Line
-	2100 4950 2300 4950
+	1400 5400 1600 5400
 Wire Wire Line
-	2300 4550 2300 4450
+	1600 5000 1600 4900
 Wire Wire Line
-	2300 4450 2100 4450
+	1600 4900 1400 4900
 Wire Wire Line
-	1900 4950 1650 4950
+	1200 5400 950  5400
 Wire Wire Line
-	1650 4950 1650 5000
+	950  5400 950  5450
 Wire Wire Line
-	1900 4450 1650 4450
+	1200 4900 950  4900
 Wire Wire Line
-	1650 4450 1650 4950
-Connection ~ 1650 4950
+	950  4900 950  5400
+Connection ~ 950  5400
 Wire Wire Line
-	3050 4950 2300 4950
-Connection ~ 2300 4950
+	2350 5400 1600 5400
+Connection ~ 1600 5400
 Wire Wire Line
-	3050 4850 2600 4850
+	2350 5300 1900 5300
 Wire Wire Line
-	2600 4850 2600 4450
+	1900 5300 1900 4900
 Wire Wire Line
-	2600 4450 2300 4450
+	1900 4900 1600 4900
 Wire Wire Line
-	2300 4850 2300 4950
-Connection ~ 2300 4450
+	1600 5300 1600 5400
+Connection ~ 1600 4900
 $Comp
-L power:GND #PWR?
+L power:GND #PWR0112
 U 1 1 5C550646
 P 4500 4400
-F 0 "#PWR?" H 4500 4150 50  0001 C CNN
+F 0 "#PWR0112" H 4500 4150 50  0001 C CNN
 F 1 "GND" H 4505 4227 50  0000 C CNN
 F 2 "" H 4500 4400 50  0001 C CNN
 F 3 "" H 4500 4400 50  0001 C CNN
@@ -678,10 +669,10 @@ F 3 "" H 4500 4400 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Device:C_Small C?
+L Device:C_Small C5
 U 1 1 5C550966
 P 4150 4150
-F 0 "C?" H 4058 4104 50  0000 R CNN
+F 0 "C5" H 4058 4104 50  0000 R CNN
 F 1 "100n" H 4058 4195 50  0000 R CNN
 F 2 "" H 4150 4150 50  0001 C CNN
 F 3 "~" H 4150 4150 50  0001 C CNN
@@ -714,10 +705,10 @@ Wire Wire Line
 Wire Wire Line
 	3750 3700 3750 4000
 $Comp
-L Device:C_Small C?
+L Device:C_Small C6
 U 1 1 5C56A473
 P 4400 4150
-F 0 "C?" H 4308 4104 50  0000 R CNN
+F 0 "C6" H 4308 4104 50  0000 R CNN
 F 1 "100n" H 4308 4195 50  0000 R CNN
 F 2 "" H 4400 4150 50  0001 C CNN
 F 3 "~" H 4400 4150 50  0001 C CNN
@@ -725,10 +716,10 @@ F 3 "~" H 4400 4150 50  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L Device:C_Small C?
+L Device:C_Small C7
 U 1 1 5C56A4BF
 P 4600 4150
-F 0 "C?" H 4508 4104 50  0000 R CNN
+F 0 "C7" H 4508 4104 50  0000 R CNN
 F 1 "100n" H 4508 4195 50  0000 R CNN
 F 2 "" H 4600 4150 50  0001 C CNN
 F 3 "~" H 4600 4150 50  0001 C CNN
@@ -736,10 +727,10 @@ F 3 "~" H 4600 4150 50  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L Device:C_Small C?
+L Device:C_Small C8
 U 1 1 5C56A505
 P 4800 4150
-F 0 "C?" H 4708 4104 50  0000 R CNN
+F 0 "C8" H 4708 4104 50  0000 R CNN
 F 1 "100n" H 4708 4195 50  0000 R CNN
 F 2 "" H 4800 4150 50  0001 C CNN
 F 3 "~" H 4800 4150 50  0001 C CNN
@@ -787,10 +778,10 @@ Wire Wire Line
 	4150 3700 3850 3700
 Connection ~ 3850 3700
 $Comp
-L power:VBUS #PWR?
+L power:VBUS #PWR0113
 U 1 1 5C590339
 P 9400 1100
-F 0 "#PWR?" H 9400 950 50  0001 C CNN
+F 0 "#PWR0113" H 9400 950 50  0001 C CNN
 F 1 "VBUS" H 9415 1273 50  0000 C CNN
 F 2 "" H 9400 1100 50  0001 C CNN
 F 3 "" H 9400 1100 50  0001 C CNN
@@ -802,21 +793,21 @@ Wire Wire Line
 Wire Wire Line
 	9400 1250 9600 1250
 $Comp
-L Device:C C?
+L Device:C C3
 U 1 1 5C594246
 P 10350 1550
-F 0 "C?" H 10465 1596 50  0000 L CNN
-F 1 "C" H 10465 1505 50  0000 L CNN
+F 0 "C3" H 10465 1596 50  0000 L CNN
+F 1 "4u7" H 10465 1505 50  0000 L CNN
 F 2 "" H 10388 1400 50  0001 C CNN
 F 3 "~" H 10350 1550 50  0001 C CNN
 	1    10350 1550
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:+3V3 #PWR?
+L power:+3V3 #PWR0114
 U 1 1 5C5943EC
 P 10350 1100
-F 0 "#PWR?" H 10350 950 50  0001 C CNN
+F 0 "#PWR0114" H 10350 950 50  0001 C CNN
 F 1 "+3V3" H 10365 1273 50  0000 C CNN
 F 2 "" H 10350 1100 50  0001 C CNN
 F 3 "" H 10350 1100 50  0001 C CNN
@@ -837,10 +828,10 @@ Wire Wire Line
 Wire Wire Line
 	9900 1800 9900 1550
 $Comp
-L power:GND #PWR?
+L power:GND #PWR0115
 U 1 1 5C59FE01
 P 9900 1950
-F 0 "#PWR?" H 9900 1700 50  0001 C CNN
+F 0 "#PWR0115" H 9900 1700 50  0001 C CNN
 F 1 "GND" H 9905 1777 50  0000 C CNN
 F 2 "" H 9900 1950 50  0001 C CNN
 F 3 "" H 9900 1950 50  0001 C CNN
@@ -853,10 +844,10 @@ Wire Wire Line
 Text Label 3050 4450 2    50   ~ 0
 nRESET
 $Comp
-L Device:C_Small C?
+L Device:C_Small C4
 U 1 1 5C5A8D80
 P 9300 3400
-F 0 "C?" H 9150 3450 50  0000 L CNN
+F 0 "C4" H 9150 3450 50  0000 L CNN
 F 1 "100n" H 9100 3350 50  0000 L CNN
 F 2 "" H 9300 3400 50  0001 C CNN
 F 3 "~" H 9300 3400 50  0001 C CNN
@@ -874,4 +865,152 @@ Wire Wire Line
 	9150 3100 9500 3100
 Wire Wire Line
 	9150 3100 9150 3500
+$Comp
+L Device:R R2
+U 1 1 5C55D093
+P 8300 5100
+F 0 "R2" H 8370 5146 50  0000 L CNN
+F 1 "<5k?" H 8370 5055 50  0000 L CNN
+F 2 "" V 8230 5100 50  0001 C CNN
+F 3 "~" H 8300 5100 50  0001 C CNN
+	1    8300 5100
+	1    0    0    -1  
+$EndComp
+Text Label 8300 4850 2    50   ~ 0
+CC1_EN
+Wire Wire Line
+	8300 4850 8300 4950
+$Comp
+L Device:R R4
+U 1 1 5C564761
+P 8000 5400
+F 0 "R4" V 7793 5400 50  0000 C CNN
+F 1 "200" V 7884 5400 50  0000 C CNN
+F 2 "" V 7930 5400 50  0001 C CNN
+F 3 "~" H 8000 5400 50  0001 C CNN
+	1    8000 5400
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R5
+U 1 1 5C5647E6
+P 8600 5400
+F 0 "R5" V 8393 5400 50  0000 C CNN
+F 1 "100" V 8484 5400 50  0000 C CNN
+F 2 "" V 8530 5400 50  0001 C CNN
+F 3 "~" H 8600 5400 50  0001 C CNN
+	1    8600 5400
+	0    1    1    0   
+$EndComp
+Text Label 7700 5400 2    50   ~ 0
+CC1_RX
+Wire Wire Line
+	7700 5400 7850 5400
+Wire Wire Line
+	8150 5400 8300 5400
+Wire Wire Line
+	8300 5250 8300 5400
+Connection ~ 8300 5400
+Wire Wire Line
+	8300 5400 8450 5400
+Text Label 8900 5400 0    50   ~ 0
+CC1_TX
+Wire Wire Line
+	8900 5400 8750 5400
+$Comp
+L Device:R R3
+U 1 1 5C57B42F
+P 10100 5250
+F 0 "R3" H 10170 5296 50  0000 L CNN
+F 1 "<5k?" H 10170 5205 50  0000 L CNN
+F 2 "" V 10030 5250 50  0001 C CNN
+F 3 "~" H 10100 5250 50  0001 C CNN
+	1    10100 5250
+	1    0    0    -1  
+$EndComp
+Text Label 10100 5000 2    50   ~ 0
+CC2_EN
+Wire Wire Line
+	10100 5000 10100 5100
+$Comp
+L Device:R R6
+U 1 1 5C57B437
+P 9800 5550
+F 0 "R6" V 9593 5550 50  0000 C CNN
+F 1 "200" V 9684 5550 50  0000 C CNN
+F 2 "" V 9730 5550 50  0001 C CNN
+F 3 "~" H 9800 5550 50  0001 C CNN
+	1    9800 5550
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R7
+U 1 1 5C57B43D
+P 10400 5550
+F 0 "R7" V 10193 5550 50  0000 C CNN
+F 1 "100" V 10284 5550 50  0000 C CNN
+F 2 "" V 10330 5550 50  0001 C CNN
+F 3 "~" H 10400 5550 50  0001 C CNN
+	1    10400 5550
+	0    1    1    0   
+$EndComp
+Text Label 9500 5550 2    50   ~ 0
+CC2_RX
+Wire Wire Line
+	9500 5550 9650 5550
+Wire Wire Line
+	9950 5550 10100 5550
+Wire Wire Line
+	10100 5400 10100 5550
+Connection ~ 10100 5550
+Wire Wire Line
+	10100 5550 10250 5550
+Text Label 10700 5550 0    50   ~ 0
+CC2_TX
+Wire Wire Line
+	10700 5550 10550 5550
+Wire Wire Line
+	4550 6450 4350 6450
+Text Label 8300 5600 0    50   ~ 0
+CC1
+Wire Wire Line
+	8300 5600 8300 5400
+Text Label 10100 5750 0    50   ~ 0
+CC2
+Wire Wire Line
+	10100 5750 10100 5550
+$Comp
+L Device:R R8
+U 1 1 5C5A1C0E
+P 4600 6650
+F 0 "R8" V 4600 6650 50  0000 C CNN
+F 1 "NF" V 4500 6650 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric_Pad1.05x0.95mm_HandSolder" V 4530 6650 50  0001 C CNN
+F 3 "~" H 4600 6650 50  0001 C CNN
+	1    4600 6650
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R9
+U 1 1 5C5A1CB4
+P 4600 6750
+F 0 "R9" V 4600 6750 50  0000 C CNN
+F 1 "NF" V 4700 6750 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric_Pad1.05x0.95mm_HandSolder" V 4530 6750 50  0001 C CNN
+F 3 "~" H 4600 6750 50  0001 C CNN
+	1    4600 6750
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	4450 6750 4350 6750
+Wire Wire Line
+	4350 6650 4450 6650
+Text Label 4900 6650 0    50   ~ 0
+D-
+Text Label 4900 6750 0    50   ~ 0
+D+
+Wire Wire Line
+	4900 6750 4750 6750
+Wire Wire Line
+	4900 6650 4750 6650
 $EndSCHEMATC
