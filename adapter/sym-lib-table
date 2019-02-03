@@ -1,9 +1,4 @@
 (sym_lib_table
   (lib (name display_port)(type Legacy)(uri ${KIPRJMOD}/displayport-hardware-hacking/libraries/display_port.lib)(options "")(descr ""))
-  (lib (name hsmc)(type Legacy)(uri ${KIPRJMOD}/displayport-hardware-hacking/libraries/hsmc.lib)(options "")(descr ""))
-  (lib (name HSMC-DIFF)(type Legacy)(uri ${KIPRJMOD}/displayport-hardware-hacking/libraries/HSMC-DIFF.lib)(options "")(descr ""))
-  (lib (name HSMC-RAW)(type Legacy)(uri ${KIPRJMOD}/displayport-hardware-hacking/libraries/HSMC-RAW.lib)(options "")(descr ""))
-  (lib (name HSMC-SE)(type Legacy)(uri ${KIPRJMOD}/displayport-hardware-hacking/libraries/HSMC-SE.lib)(options "")(descr ""))
-  (lib (name timvideos-pcie-8x)(type Legacy)(uri ${KIPRJMOD}/displayport-hardware-hacking/libraries/timvideos-pcie-8x.lib)(options "")(descr ""))
   (lib (name DisplayPort_Redriver)(type Legacy)(uri /home/strfry/C3D2/LG360VR/Adapter/adapter/DisplayPort_Redriver.lib)(options "")(descr ""))
 )
