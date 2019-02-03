@@ -1,4 +1,5 @@
 (fp_lib_table
   (lib (name DP1RD20JQ1R400)(type KiCad)(uri ${KIPRJMOD}/displayport-hardware-hacking/libraries/DP1RD20JQ1R400.pretty)(options "")(descr ""))
   (lib (name SN75DP118)(type KiCad)(uri ${KIPRJMOD}/SN75DP118.pretty)(options "")(descr ""))
+  (lib (name USB_MicroB)(type KiCad)(uri ${KIPRJMOD}/USB_MicroB.pretty)(options "")(descr ""))
 )
