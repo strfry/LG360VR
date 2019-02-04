@@ -658,6 +658,11 @@
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
+    (model ${KIPRJMOD}/packages3d/Diode_Cree_CLV1A-FKB-CJ1M1F1BB7R4S3_eec.STEP
+      (at (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
   )
 
   (module SN75DP119:QFN-20-1EP_4x4mm_P0.5mm_EP2.5x2.5mm (layer F.Cu) (tedit 5C4F94D1) (tstamp 5C633F23)
@@ -1089,6 +1094,11 @@
     (pad 1 smd rect (at -1.85 0 270) (size 1.7 2.4) (layers F.Cu F.Paste F.Mask)
       (net 56 "Net-(C9-Pad1)"))
     (model ${KISYS3DMOD}/Crystal.3dshapes/Crystal_SMD_TXC_7A-2Pin_5x3.2mm.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
+    (model ${KIPRJMOD}/packages3d/CRYSTAL_TXC_7A.stp
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
