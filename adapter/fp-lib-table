@@ -2,4 +2,5 @@
   (lib (name Displayport)(type KiCad)(uri ${KIPRJMOD}/footprints/Displayport.pretty)(options "")(descr ""))
   (lib (name SN75DP119)(type KiCad)(uri ${KIPRJMOD}/footprints/SN75DP119.pretty)(options "")(descr ""))
   (lib (name USB_MicroB)(type KiCad)(uri ${KIPRJMOD}/footprints/USB_MicroB.pretty)(options "")(descr ""))
+  (lib (name EVQPLMA15)(type KiCad)(uri ${KIPRJMOD}/footprints/EVQPLMA15.pretty)(options "")(descr ""))
 )
