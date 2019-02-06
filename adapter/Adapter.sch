@@ -5,11 +5,11 @@ EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
 Sheet 1 1
-Title ""
-Date ""
-Rev ""
-Comp ""
-Comment1 ""
+Title "LG360VR Adapter Board"
+Date "2019-02-06"
+Rev "v1"
+Comp "strfry"
+Comment1 "Draft"
 Comment2 ""
 Comment3 ""
 Comment4 ""
@@ -313,10 +313,10 @@ F 4 "STM32F072CBT6" H 3000 5750 50  0001 C CNN "MFP"
 	1    3000 5750
 	1    0    0    -1  
 $EndComp
-Text Notes -2250 7250 0    50   ~ 0
-STM32 Q&A:\nDoes the VBAT need to be connected? yes, to VDD\nDo we need special decoupling for AVDD? yes, with bead\n\nWhich are the analog pins?\nstm32f072rb.pdf p.33 ff -> PA0-PA7, PB0-1\n\n\n5V Tolerant pins?\n-> PF0-1, PB10-11\n\n\nHow to do reset?  -> can it be left floating / on SWD connector?\n\n\nWhat is BOOT0?\n\n\nHow we do programming? -> expose SWD Pins + VDD + RESET\n\nDo PF0/1 have a special function? -> Yes, the Mhz Quartz\n\nOpt to not populate Crystal? F0x2 is "crystalless USB type"
-Text Notes -3950 4750 0    50   ~ 0
-Design Considerations.\n\nWhat to do with extra lane on DP redriver?\n -> route DP1+- as well, disable lane through EN-Z in software\n-> dont route, save hassle, focus on matching DP0\n\nTerminate extra DP lanes or leave open? \n\n\nMake use of USB in STM32?-> Break out to pin headers?\n-> maybe, just maybe: connect to device USB, and leave floating?\n\n\nConnect CONFIG1/CONFIG2 to microcontroller, just in case? -> Connect CONFIG2 to CEC AF-Pin\n-> CONFIG1/CONFIG2 is not I2C, would need separate conn to AUX: \nhttp://mikesmods.com/mm-wp/wp-content/uploads/2014/03/Commercial_DP2DVI_Adapter.pdf\n\n\nShould USB-C VBUS be FET switchable? Should CC lines be switched as well?\n-> TI Paper says Disconnect FET is needed -> sth. like \nHigh Side PMOS: IRLML2244TRPBF\n\n\nUSB-PD CC PHY?\n\n\nSPI Self Clock!!!\n
+Text Notes -3000 7450 0    50   ~ 0
+STM32 Q&A:\nDoes the VBAT need to be connected? yes, to VDD\nDo we need special decoupling for AVDD? yes, preferably doucupled with bead.\nTODO: Use reference bead\n\nWhich are the analog pins?\nstm32f072rb.pdf p.33 ff -> PA0-PA7, PB0-1\n\n\n5V Tolerant pins?\n-> PF0-1, PB10-11\nTODO: Make sure LED pins are 5V tolerant\n\n\nHow to do reset?  -> can it be left floating / on SWD connector?\n-> pulldown and provide button\n\nWhat is BOOT0?\n-> essentially enables builtin serial bootrom, unless disabled by config register\n\n\nHow we do programming? -> expose SWD Pins + VDD + RESET\n\nDo PF0/1 have a special function? -> Yes, the Mhz Quartz\n\nOpt to not populate Crystal? F0x2 is "crystalless USB type"
+Text Notes -3850 3250 0    50   ~ 0
+Design Considerations.\n\nWhat to do with extra lane on DP redriver?\n -> route DP1+- as well, disable lane through EN-Z in software\n-> dont route, save hassle, focus on matching DP0\n\nTerminate extra DP lanes or leave open? \n-> just leave as is, link training should disable them\n\n\nMake use of USB in STM32?-> Break out to pin headers?\n-> maybe, just maybe: connect to device USB, and leave floating?\n\n\nConnect CONFIG1/CONFIG2 to microcontroller, just in case? -> Connect CONFIG2 to CEC AF-Pin\n-> CONFIG1/CONFIG2 is not I2C, would need separate conn to AUX: \nhttp://mikesmods.com/mm-wp/wp-content/uploads/2014/03/Commercial_DP2DVI_Adapter.pdf\n-> dont bother\n\nShould USB-C VBUS be FET switchable? Should CC lines be switched as well?\n-> TI Paper says Disconnect FET is needed -> sth. like \nHigh Side PMOS: IRLML2244TRPBF\n\n\nUSB-PD CC PHY? -> almost done\nTODO: Correct resistor value for 3.3V\n\n\nSPI Self Clock!!! -> check, TX_CLK\n\n\nAC coupling on RX side? -> yes\n\nWhich type of couple cap?\n-> Intel doc on PCIe recommend 100nF X7R, should be fine
 NoConn ~ 5000 1600
 NoConn ~ 5000 1700
 NoConn ~ 4000 1500
@@ -1278,8 +1278,6 @@ F 4 "SN75DP119RGYR" H 7150 2150 50  0001 C CNN "MFP"
 	1    7150 2150
 	1    0    0    -1  
 $EndComp
-Text Notes 6750 1100 0    50   ~ 0
-AC coupling on RX side?\n\nWhich type of couple cap?
 $Comp
 L power:VDD #PWR0123
 U 1 1 5C576E1B
@@ -1566,5 +1564,7 @@ Get reference Bead
 Text Notes 7100 5950 0    50   ~ 0
 Discuss best connector type
 Text Notes 850  7550 0    50   ~ 0
-Compute Resistors\n
+TODO: Compute Resistors\n
+Text Notes 4050 6150 0    50   ~ 0
+Try to do AUX-Snooping...
 $EndSCHEMATC
