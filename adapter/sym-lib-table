@@ -1,4 +1,4 @@
 (sym_lib_table
-  (lib (name DisplayPort_Redriver)(type Legacy)(uri /home/strfry/C3D2/LG360VR/Adapter/adapter/DisplayPort_Redriver.lib)(options "")(descr ""))
   (lib (name dk_USB-DVI-HDMI-Connectors)(type Legacy)(uri ${KIPRJMOD}/digikey-kicad-library/digikey-symbols/dk_USB-DVI-HDMI-Connectors.lib)(options "")(descr ""))
+  (lib (name SN75DP119RGYT)(type Legacy)(uri ${KIPRJMOD}/symbols/SN75DP119RGYT.lib)(options "")(descr ""))
 )
