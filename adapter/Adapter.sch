@@ -334,9 +334,9 @@ Text GLabel 6700 1800 0    50   Input ~ 0
 VOD_CTL
 Text GLabel 6700 1100 0    50   Input ~ 0
 EN_CTL
-Text Label 6300 1400 2    50   ~ 0
-DP_IN_0-
 Text Label 6300 1300 2    50   ~ 0
+DP_IN_0-
+Text Label 6300 1400 2    50   ~ 0
 DP_IN_0+
 $Comp
 L power:GND #PWR0109
@@ -384,9 +384,9 @@ F 3 "" H 6350 2250 50  0001 C CNN
 	1    6350 2250
 	1    0    0    -1  
 $EndComp
-Text Label 9100 1100 0    50   ~ 0
-DP_OUT_0+
 Text Label 9100 1200 0    50   ~ 0
+DP_OUT_0+
+Text Label 9100 1100 0    50   ~ 0
 DP_OUT_0-
 NoConn ~ 10050 3900
 NoConn ~ 10050 4000
@@ -402,7 +402,7 @@ U 1 1 5C52D69D
 P 1350 1100
 F 0 "U2" H 1350 1342 50  0000 C CNN
 F 1 "LD1117S33TR" H 1350 1251 50  0000 C CNN
-F 2 "Package_TO_SOT_SMD:SOT-223" H 1350 1350 50  0001 C CIN
+F 2 "Package_TO_SOT_SMD:SOT-223-3_TabPin2" H 1350 1350 50  0001 C CIN
 F 3 "https://www.diodes.com/assets/Datasheets/AZ1117.pdf" H 1350 1100 50  0001 C CNN
 F 4 "LD1117S33CTR" H 1350 1100 50  0001 C CNN "MFP"
 F 5 "LD1117S33CTR" H 1350 1100 50  0001 C CNN "S2PN"
@@ -476,7 +476,7 @@ U 1 1 5C53F02C
 P 7250 5150
 F 0 "J4" H 7223 5173 50  0000 R CNN
 F 1 "Conn_01x05_Male" H 7223 5082 50  0000 R CNN
-F 2 "Connector_Molex:Molex_PicoBlade_53047-0510_1x05_P1.25mm_Vertical" H 7250 5150 50  0001 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x05_P2.54mm_Horizontal" H 7250 5150 50  0001 C CNN
 F 3 "~" H 7250 5150 50  0001 C CNN
 	1    7250 5150
 	-1   0    0    -1  
@@ -762,13 +762,13 @@ Wire Wire Line
 	4150 6650 4000 6650
 Text Label 2100 6050 2    50   ~ 0
 CC1_EN
-Text Label 3800 5650 0    50   ~ 0
+Text Label 2100 5550 2    50   ~ 0
 CC1_RX
 Wire Wire Line
 	3800 5650 3600 5650
-Text Label 2100 6150 2    50   ~ 0
+Text Label 2100 5750 2    50   ~ 0
 CC2_EN
-Text Label 3800 5850 0    50   ~ 0
+Text Label 2100 5650 2    50   ~ 0
 CC2_RX
 Wire Wire Line
 	3800 5850 3600 5850
@@ -799,11 +799,11 @@ Wire Wire Line
 	3800 5950 3600 5950
 Wire Wire Line
 	3800 6050 3600 6050
-Text Label 2100 5650 2    50   ~ 0
+Text Label 2100 6350 2    50   ~ 0
 TX_CLK
 Text Label 2100 5850 2    50   ~ 0
 TX_CLK
-Text GLabel 3600 6250 2    50   Input ~ 0
+Text GLabel 3800 5850 2    50   Input ~ 0
 VOD_CTL
 Text Label 2100 6650 2    50   ~ 0
 LED_G_L
@@ -992,7 +992,7 @@ F 3 "" H 1100 6000 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	1100 6000 1100 6150
-Text GLabel 2300 5550 0    50   Input ~ 0
+Text GLabel 3800 5650 2    50   Input ~ 0
 EQ_CTL
 Text GLabel 3600 5550 2    50   Input ~ 0
 EN_CTL
@@ -1211,8 +1211,6 @@ Wire Wire Line
 Wire Wire Line
 	3600 6850 3700 6850
 Wire Wire Line
-	2100 5650 2300 5650
-Wire Wire Line
 	2100 5850 2300 5850
 $Comp
 L Device:R R14
@@ -1236,7 +1234,7 @@ Wire Wire Line
 Wire Wire Line
 	4100 5950 4250 5950
 Wire Wire Line
-	2100 6150 2300 6150
+	2100 5750 2300 5750
 Wire Wire Line
 	2100 6050 2300 6050
 $Comp
@@ -1286,7 +1284,7 @@ U 1 1 5C591D0F
 P 7050 6200
 F 0 "J5" H 7023 6130 50  0000 R CNN
 F 1 "Conn_01x03_Male" H 7023 6221 50  0000 R CNN
-F 2 "Connector_Molex:Molex_PicoBlade_53047-0310_1x03_P1.25mm_Vertical" H 7050 6200 50  0001 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Horizontal" H 7050 6200 50  0001 C CNN
 F 3 "~" H 7050 6200 50  0001 C CNN
 	1    7050 6200
 	-1   0    0    1   
@@ -1327,8 +1325,8 @@ Text Notes 7100 5950 0    50   ~ 0
 Discuss best connector type
 Text Notes 4050 6000 0    50   ~ 0
 Option to snoop AUX
-Text Notes 4350 7750 0    50   ~ 0
-STM32 Optimisation\n\nWhich pins are primary UART for boot?\n\nWhy are the AUX-Pins selected?\n\nCan USB and AUX move to one side of processor?
+Text Notes 3750 8700 0    50   ~ 0
+STM32 Optimisation\n\nWhich pins are primary UART for boot?\n\nWhy are the AUX-Pins selected?\n\nCan USB and AUX move to one side of processor? -> No, USB is fixed and not near the analog pins\n\nWhere can TX_CLK move?\nTX_CLKIN: SPI1_SCK
 $Comp
 L Device:R R19
 U 1 1 5C5BBA7E
@@ -1636,7 +1634,7 @@ L Switch:SW_Push SW1
 U 1 1 5C5FAC4A
 P 5600 6300
 F 0 "SW1" V 5554 6448 50  0000 L CNN
-F 1 "BOOT" V 5645 6448 50  0000 L CNN
+F 1 "RESET" V 5645 6448 50  0000 L CNN
 F 2 "EVQPLMA15:EVQPLMA15" H 5600 6500 50  0001 C CNN
 F 3 "" H 5600 6500 50  0001 C CNN
 F 4 "EVQ-PLMA15" H 5600 6300 50  0001 C CNN "MFP"
@@ -1709,4 +1707,56 @@ F 5 "RC0603FR-0797R6L" H 7700 4250 50  0001 C CNN "S2PN"
 	1    7700 4250
 	0    1    1    0   
 $EndComp
+$Comp
+L Mechanical:MountingHole MH1
+U 1 1 5C603BB2
+P 10300 5850
+F 0 "MH1" H 10400 5896 50  0000 L CNN
+F 1 "MountingHole" H 10400 5805 50  0000 L CNN
+F 2 "MountingHole:MountingHole_2.5mm" H 10300 5850 50  0001 C CNN
+F 3 "~" H 10300 5850 50  0001 C CNN
+	1    10300 5850
+	1    0    0    -1  
+$EndComp
+$Comp
+L Mechanical:MountingHole MH2
+U 1 1 5C603DAD
+P 10300 6050
+F 0 "MH2" H 10400 6096 50  0000 L CNN
+F 1 "MountingHole" H 10400 6005 50  0000 L CNN
+F 2 "MountingHole:MountingHole_2.5mm" H 10300 6050 50  0001 C CNN
+F 3 "~" H 10300 6050 50  0001 C CNN
+	1    10300 6050
+	1    0    0    -1  
+$EndComp
+$Comp
+L Mechanical:MountingHole MH3
+U 1 1 5C612305
+P 10300 6250
+F 0 "MH3" H 10400 6296 50  0000 L CNN
+F 1 "MountingHole" H 10400 6205 50  0000 L CNN
+F 2 "MountingHole:MountingHole_2.5mm" H 10300 6250 50  0001 C CNN
+F 3 "~" H 10300 6250 50  0001 C CNN
+	1    10300 6250
+	1    0    0    -1  
+$EndComp
+$Comp
+L Mechanical:MountingHole MH4
+U 1 1 5C6337DC
+P 10300 6450
+F 0 "MH4" H 10400 6496 50  0000 L CNN
+F 1 "MountingHole" H 10400 6405 50  0000 L CNN
+F 2 "MountingHole:MountingHole_2.5mm" H 10300 6450 50  0001 C CNN
+F 3 "~" H 10300 6450 50  0001 C CNN
+	1    10300 6450
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3800 6250 3600 6250
+Wire Wire Line
+	2100 5650 2300 5650
+Wire Wire Line
+	2100 5550 2300 5550
+Wire Wire Line
+	2100 6350 2300 6350
 $EndSCHEMATC
