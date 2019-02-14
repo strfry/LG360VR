@@ -413,7 +413,7 @@ Wire Wire Line
 	10200 2350 10200 2600
 Text GLabel 9850 2150 0    50   Input ~ 0
 VBUS_EN
-Text GLabel 2300 6550 0    50   Input ~ 0
+Text GLabel 2300 6450 0    50   Input ~ 0
 VBUS_EN
 $Comp
 L Device:Q_PMOS_GSD Q1
@@ -1759,4 +1759,5 @@ Wire Wire Line
 	2100 5550 2300 5550
 Wire Wire Line
 	2100 6350 2300 6350
+NoConn ~ 3350 3250
 $EndSCHEMATC
