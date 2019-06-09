@@ -1,6 +1,6 @@
 EESchema Schematic File Version 4
 LIBS:Adapter-cache
-EELAYER 26 0
+EELAYER 29 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
@@ -992,7 +992,7 @@ F 3 "" H 1100 6000 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	1100 6000 1100 6150
-Text GLabel 3800 5650 2    50   Input ~ 0
+Text GLabel 4400 5650 2    50   Input ~ 0
 EQ_CTL
 Text GLabel 3600 5550 2    50   Input ~ 0
 EN_CTL
@@ -1783,4 +1783,7 @@ Text Label 8700 1100 0    50   ~ 0
 OUT0N
 Text Label 8700 1200 0    50   ~ 0
 OUT0P
+NoConn ~ 4400 5650
+Text Label 3800 5650 0    50   ~ 0
+CC1_RX
 $EndSCHEMATC
